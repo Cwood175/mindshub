@@ -24,7 +24,6 @@ MAIN_REQS_PATH = "requirements/requirements.txt"
 DEV_REQS_PATH = "requirements/requirements-dev.txt"
 TEST_REQS_PATH = "requirements/requirements-test.txt"
 GRPC_REQS_PATH = "requirements/requirements-grpc.txt"
-DOCKER_REQS_PATH = "docker/handler_discovery/requirements.txt"
 
 HANDLER_REQS_PATHS = list(
     set(glob.glob("**/requirements*.txt", recursive=True))
@@ -56,7 +55,7 @@ MAIN_REQUIREMENTS_DEPS = get_requirements_from_file(MAIN_REQS_PATH) + get_requir
 BYOM_HANLDER_DEPS = ["pyarrow"]
 
 HANDLER_RULE_IGNORES = {
-    "DEP002": OPTIONAL_HANDLER_DEPS + MAIN_REQUIREMENTS_DEPS + BYOM_HANLDER_DEPS,
+    "DEP002": OPTIONAL_HANDLER_DEPS + MAIN_REQUIREMENTS_DEPS + BYOM_HANLDER_DEPS + ["sentence-transformers"],
     "DEP001": ["tests"]  # 'tests' is the mindsdb tests folder in the repo root
 }
 
